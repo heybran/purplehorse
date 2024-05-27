@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f9f3ee2c-b67a-419e-bdd3-a65636dfffe7" name="tencent-heybran.cn">
+        <fileTransfer accessType="SFTP" host="43.134.22.62" port="22" sshConfigId="aca5f062-9b65-4754-89c9-b31fbb90b44a" sshConfig="ubuntu@43.134.22.62:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
