@@ -14,7 +14,59 @@ Text Domain: purplehorse
 Tags: blog, photography, portfolio, grid-layout, left-sidebar, wide-blocks, accessibility-ready, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, rtl-language-support, sticky-post, style-variations, threaded-comments, translation-ready, one-column, news
 */
 
+*, :before, :after {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding-bottom: .5rem;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
+    font-size: 1.2rem;
+    font-weight: 500;
+    grid-template-columns: 275px 1fr;
+    grid-template-areas:
+        "header main"
+        "footer main";
+    height: 100vh;
+    height: 100dvh;
+    background-color: #f8fafc;
+    color: #334766;
+}
+
+.skip-to-content {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: -1;
+    padding-inline: 1.75ch;
+    padding-block: .75ch;
+    border-radius: .5ch;
+    background: darkseagreen;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+}
+
+.skip-to-content:focus-visible {
+    outline: darkseagreen solid 2px;
+    outline-offset: 3px;
+    opacity: 1;
+    z-index: 999;
+}
+
+main {
+    margin-inline: auto;
+    grid-area: main;
+    overflow: auto;
+    background-color: #fff;
+    padding: 1.5rem;
 }
 

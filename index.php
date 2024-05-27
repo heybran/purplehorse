@@ -1,41 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
-	<link rel="stylesheet" href="<?php echo esc_url( get_stylesheet_uri() ); ?>" type="text/css" />
-	<?php wp_head(); ?>
-</head>
-<body>
-<h1><?php bloginfo( 'name' ); ?></h1>
-<h2><?php bloginfo( 'description' ); ?></h2>
+<?php
+/**
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package purplehorse
+ */
 
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+get_header();
+?>
 
-	<h3><?php the_title(); ?></h3>
-
-	<?php the_content(); ?>
-	<?php wp_link_pages(); ?>
-	<?php edit_post_link(); ?>
-
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    <h2><?php the_title(); ?></h2>
+        <?php the_content(); ?>
+        <?php wp_link_pages(); ?>
+        <?php edit_post_link(); ?>
 <?php endwhile; ?>
-
-	<?php
-	if ( get_next_posts_link() ) {
-		next_posts_link();
-	}
-	?>
-	<?php
-	if ( get_previous_posts_link() ) {
-		previous_posts_link();
-	}
-	?>
-
-<?php else: ?>
-
-	<p>No posts found. :(</p>
-
+    <?php if (get_next_posts_link()) : next_posts_link(); 
+    endif; ?>
+    <?php if (get_previous_posts_link()) : previous_posts_link(); 
+    endif; ?>
 <?php endif; ?>
-<?php wp_footer(); ?>
-</body>
-</html>
+
+<?php get_footer(); ?>
