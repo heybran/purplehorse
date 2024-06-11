@@ -17,13 +17,16 @@
                 padding-inline: 1rem;
                 font-size: 0.8em;
                 padding-bottom: .5rem;
+                @media (max-width: 768px) {
+                    text-align: center;
+                }
             }
             a {
                 color: inherit;
             }
         </style>
         <footer>
-            <a href="/accessibility-statement">Accessibility Statement</a><br>
+            <a href="/accessibility-statement">web无障碍声明</a><br>
             © 2023 Brandon Zhang
         </footer>
     </template>

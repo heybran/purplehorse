@@ -13,18 +13,35 @@
  */
 
 get_header();
-?>
+if ( have_posts() ) :
 
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-    <h2><?php the_title(); ?></h2>
-        <?php the_content(); ?>
-        <?php wp_link_pages(); ?>
-        <?php edit_post_link(); ?>
-<?php endwhile; ?>
-    <?php if (get_next_posts_link()) : next_posts_link(); 
-    endif; ?>
-    <?php if (get_previous_posts_link()) : previous_posts_link(); 
-    endif; ?>
-<?php endif; ?>
+    if ( is_home() && ! is_front_page() ) :
+        ?>
+        <header>
+            <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+        </header>
+        <?php
+    endif;
 
-<?php get_footer(); ?>
+    /* Start the Loop */
+    while ( have_posts() ) :
+        the_post();
+
+        /*
+         * Include the Post-Type-specific template for the content.
+         * If you want to override this in a child theme, then include a file
+         * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+         */
+        get_template_part( 'template-parts/content', get_post_type() );
+
+    endwhile;
+
+    the_posts_navigation();
+
+else :
+
+    get_template_part( 'template-parts/content', 'none' );
+
+endif;
+get_sidebar();
+get_footer();

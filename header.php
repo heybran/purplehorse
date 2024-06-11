@@ -45,6 +45,15 @@
                     text-decoration: none;
                     color: inherit;
                 }
+                .main-navigation {
+                    & ul {
+                        list-style: ' ';
+                        padding: 0;
+                    }
+                    & a:hover {
+                        text-decoration: underline;
+                    }
+                }
             </style>
             <header>
                 <div class="site-branding">
