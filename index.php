@@ -12,7 +12,19 @@
  * @package purplehorse
  */
 
+namespace PH;
+use Timber\Timber;
+
+// Load Composer dependencies.
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Initialize Timber.
+Timber::init();
+$context = Timber::context();
+Timber::render('index.twig', $context);
+
 get_header();
+Timber::render('header.twig', $context);
 if ( have_posts() ) :
 
     if ( is_home() && ! is_front_page() ) :

@@ -1,0 +1,24 @@
+{
+    "name": "heybran/purplehorse",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Heybran\\Purplehorse\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Brandon Zhang",
+            "email": "gwonzhang@gmail.com"
+        }
+    ],
+    "require": {
+        "timber/timber": "^2.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}
