@@ -12,7 +12,24 @@
  * @package purplehorse
  */
 
-get_header();
-the_post();
-get_template_part( 'template-parts/content', get_post_type() );
-get_footer();
+use Timber\Timber;
+
+// Load Composer dependencies.
+require_once __DIR__ . '/vendor/autoload.php';
+
+// Initialize Timber.
+Timber::init();
+$context = Timber::context([
+	/**
+	 * @link https://timber.github.io/docs/v2/guides/context/#setting-variables-in-the-context
+	 * Setting up menu variable, so inside twig template, we can just {{ menu }},
+	 * to render the site menu, but it would be better to hook into global context:
+	 * @link https://timber.github.io/docs/v2/guides/context/#setting-variables-in-the-context
+	 *
+	 * wp_nav_menu() echo output directly as `echo` variable is default to true,
+	 * for timber to work, we need to return the output instead of echoing the output.
+	 * @link https://developer.wordpress.org/reference/functions/wp_nav_menu/#parameters
+	 */
+	'menu' => wp_nav_menu(['theme_location' => 'menu-1', 'menu_id' => 'primary-menu', 'echo' => false])
+]);
+Timber::render('front-page.twig', $context);
